@@ -86,11 +86,7 @@
             </div>
 
             <div class="col-lg-12 p-md-4 mb-2">
-              <h4 class="pb-2 border-bottom mb-3" style="font-family: 'Poppins', serif;">Summary</h4>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam totam maiores natus laboriosam. Ad veniam pariatur alias possimus, ratione aliquid! Quo itaque nobis corrupti incidunt architecto id minima ipsa?</p>
-            </div>
-            <div class="col-lg-12 p-md-4 mb-2">
-                <h4 class="pb-2 border-bottom" style="font-family: 'Poppins', serif;">Icon grid</h4>
+                <h4 class="pb-2 border-bottom" style="font-family: 'Poppins', serif;">Skills</h4>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-3 pt-5">
                   <div class="col d-flex align-items-start">
                     <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#bootstrap"/></svg>
