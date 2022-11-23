@@ -37,7 +37,7 @@
                       <div class="col-md-8">
                         <div class="card-body">
                           <h5 class="card-title">Frontend</h5>
-                          <p class="card-text">HTML, CSS, JS, Bootstrap, PHP, Laravel, and ReactJs.</p>
+                          <p class="card-text">HTML, CSS, JavaScript, Bootstrap, PHP, Laravel</p>
                           <a href="/services/frontend"><button type="button" class="btn stretched-link btn-primary btn-sm"> Show Project</button></a>
                         </div>
                       </div>

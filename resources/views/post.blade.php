@@ -5,7 +5,7 @@
         <div class="col-md-11">
             <article>
                 <h1>{{ $post->title }}</h1>
-                <p>By: {{ $post->user->name }} in <a href="/services/{{ $post->category->slug }}">{{ $post->category->name }}</a></p>
+                <p class="mb-5">By: {{ $post->user->name }} in <a href="/services/{{ $post->category->slug }}">{{ $post->category->name }}</a></p>
                 {!! $post->body !!}
             </article>
         </div>
