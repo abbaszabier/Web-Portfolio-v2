@@ -6,7 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
-
+use Illuminate\Support\Facades\Auth;
 
 class DashboardPostController extends Controller
 {
@@ -34,6 +34,20 @@ class DashboardPostController extends Controller
         ]);
     }
 
+    public function uploadImage(Request $request){
+        if($request -> hasFile('upload')){
+            $origiName = $request->file('upload')->getClientOriginalName();
+            $fileName = pathinfo($origiName, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $fileName = $fileName . '_' . time() . '.' . $extension;
+
+            $request->file('upload')->move(public_path('media'), $fileName);
+
+            $url = asset('media/' . $fileName);
+            return response()->json(['fileName' => $fileName, 'uploaded'=> 1, 'url' => $url]);
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -42,7 +56,20 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-        return dd($request);
+        $validateData = $request->validate([
+            'title' => 'required',
+            'slug' => 'required|unique:posts',
+            'category_id' => 'required',
+            'github' => 'nullable',
+            'web' => 'nullable',
+            'body' => 'required'
+        ]);
+
+        $validateData['user_id'] = auth()->user()->id;
+
+        Post::create($validateData);
+
+        return redirect("/dashboard/posts");
     }
 
     /**

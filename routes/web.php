@@ -42,6 +42,7 @@ Route::prefix('/portfolio')->group(function(){
 Route::get('/contact', [ContactController::class, 'index']);
 
 Route::get('/dashboard/posts/createSlug', [DashboardPostController::class, 'createSlug'])->middleware('auth');
+Route::Post('/dashboard/posts/uploadImage', [DashboardPostController::class, 'uploadImage'])->name('ckeditor.upload')->middleware('auth');
 
 Route::prefix('/dashboard')->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->middleware('auth');

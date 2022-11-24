@@ -19,7 +19,6 @@ class CreatePostsTable extends Migration
             $table->foreignId('user_id');
             $table->string('title');
             $table->string('slug')->unique();
-            $table->string('excerpt');
             $table->string('github')->nullable();
             $table->string('web')->nullable();
             $table->text('body');
