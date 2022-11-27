@@ -2,23 +2,24 @@
 @section("container")
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Create New Post</h1>
+    <h1 class="h2"> Edit Post</h1>
 </div>
 
 <div class="col-lg-8">
-    <form action="/dashboard/posts" method="POST" enctype="multipart/form-data">
+    <form action="/dashboard/posts/{{ $post->slug }}" method="POST">
+        @method('put')
         @csrf
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" name="title" class="form-control" id="title">
+        <input type="text" name="title" class="form-control" id="title" value="{{ $post->title }}">
       </div>
       <div class="mb-3">
         <label for="slug" class="form-label">Slug</label>
-        <input type="text" class="form-control" id="slug" name="slug">
+        <input type="text" class="form-control" id="slug" name="slug" value="{{ $post->slug }}">
       </div>
       <div class="mb-3">
         <label for="slug" class="form-label">Category</label>
-        <select class="form-select" name="category_id">
+        <select class="form-select" name="category_id" value="{{ $post->category_id}}">
           <option selected>Open this select menu</option>
           @foreach ($categories as $item)
           <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -28,22 +29,18 @@
       <div class="d-flex justify-content-between mb-3">
         <div class="col-lg-5">
           <label for="web" class="form-label">Github</label>
-          <input type="text" class="form-control" id="github" name="github">
+          <input type="text" class="form-control" id="github" name="github" value="{{ $post->github }}">
         </div>
         <div class="col-lg-6">
           <label for="web" class="form-label">Web</label>
-          <input type="text" class="form-control" id="web" name="web">
+          <input type="text" class="form-control" id="web" name="web" value="{{ $post->web }}">
         </div>
       </div>
       <div class="mb-3">
-        <label for="image" class="form-label">Post Image</label>
-        <input class="form-control" type="file" id="image" name="image">
+        <label for="body" class="form-label">Body</label>
+        <textarea class="form-control" type="hidden" id="body" name="body" value="{{ $post->body }}"></textarea>
       </div>
-      <div class="mb-3">
-        <label for="slug" class="form-label">Body</label>
-        <textarea class="form-control" id="body" name="body"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary mb-5">Submit</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 

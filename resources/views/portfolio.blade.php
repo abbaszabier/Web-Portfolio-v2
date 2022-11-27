@@ -20,9 +20,15 @@
         @foreach ($posts as $post)
         <div class="col-md-4">
             <div class="card shadow-sm mt-4">
+                @if($post->image)
+                    <a href="/portfolio/{{ $post->slug }}">
+                        <img src="{{ asset('storage/' . $post->image) }}" class="card-img-top" alt="...">
+                    </a>
+                @else
                 <a href="/portfolio/{{ $post->slug }}">
-                    <img src="/img/image1.png" class="card-img-top" alt="...">
+                    <img src="/img/bg.jpg" class="card-img-top" alt="...">
                 </a>
+                @endif
                 <div class="card-body">
                     <span class="badge mb-2 p-2"><a class="text-decoration-none" href="/services/{{ $post->category->slug }}">{{ $post->category->name }}</a></span>
                     <h5 class="card-title"><a href="/portfolio/{{ $post->slug }}">{{ $post->title }}</a></h5>

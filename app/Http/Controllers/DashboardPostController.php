@@ -61,9 +61,14 @@ class DashboardPostController extends Controller
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
             'github' => 'nullable',
+            'image' => 'image|file|max:2048',
             'web' => 'nullable',
             'body' => 'required'
         ]);
+
+        if($request->file('image')){
+            $validateData['image'] = $request->file('image')->store('post-images');
+        }
 
         $validateData['user_id'] = auth()->user()->id;
 
@@ -93,7 +98,10 @@ class DashboardPostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view("dashboard.edit", [
+            'post' => $post,
+            'categories' => Category::All()
+        ]);
     }
 
     /**
@@ -116,7 +124,10 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        
+        Post::destroy($post->id);
+
+        return redirect("/dashboard/posts");
     }
 
     public function createSlug(Request $request){
