@@ -11,5 +11,4 @@
         </div>
     </div>
 </div>
-<a href="/portfolio">Back</a>
 @endsection
